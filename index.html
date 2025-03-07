@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+	<link rel="stylesheet" href="index.css">
+    <title>x</title>
+  </head>
+  <body class="index-page">
+    <div class="container">
+      <div class="rectangle">
+        <div class="lamp" id="themeToggle"></div>
+        <div class="line line-1"></div>
+        <div class="line line-2"></div>
+        <div class="line line-3"></div>
+        <div class="line line-4"></div>
+        <div class="line line-d"></div>
+        <div class="line line-d mirrored"></div>
+
+        <div class="perpendicular-line" style="--n: 0; --indent: 50px; --length: 133px;"></div>
+        <div class="perpendicular-line" style="--n: 1; --indent: 20px; --length: 158px;"></div>
+        <div class="perpendicular-line" style="--n: 2; --indent: 30px; --length: 210px;"></div>
+        <div class="perpendicular-line" style="--n: 3; --indent: 20px; --length: 248px;"></div>
+        <div class="perpendicular-line" style="--n: 4; --indent: 50px; --length: 311px;"></div>
+        <div class="perpendicular-line" style="--n: 5; --indent: 60px; --length: 363px;"></div>
+
+        <div class="perpendicular-line mirrored" style="--n: 0; --indent: 50px; --length: 133px;"></div>
+        <div class="perpendicular-line mirrored" style="--n: 1; --indent: 20px; --length: 158px;"></div>
+        <div class="perpendicular-line mirrored" style="--n: 2; --indent: 30px; --length: 210px;"></div>
+        <div class="perpendicular-line mirrored" style="--n: 3; --indent: 20px; --length: 248px;"></div>
+        <div class="perpendicular-line mirrored" style="--n: 4; --indent: 50px; --length: 311px;"></div>
+        <div class="perpendicular-line mirrored" style="--n: 5; --indent: 60px; --length: 363px;"></div>
+
+        <div class="perpendicular-line" style="--n: 0; --indent: 50px; --length: 133px;">
+          <div
+            class="handle"
+            data-handle-index="3"
+            data-page="3.html"
+            style="--handle-width: 10px; --handle-height: 13px"
+          ></div>
+        </div>
+        <div class="perpendicular-line" style="--n: 2; --indent: 30px; --length: 210px;">
+          <div
+            class="handle"
+            data-handle-index="2"
+            data-page="2.html"
+            style="--handle-width: 14px; --handle-height: 16px"
+          ></div>
+        </div>
+        <div class="perpendicular-line" style="--n: 4; --indent: 50px; --length: 311px;">
+          <div
+            class="handle"
+            data-handle-index="1"
+            data-page="1.html"
+            style="--handle-width: 18px; --handle-height: 22px"
+          ></div>
+        </div>
+
+        <div class="perpendicular-line mirrored" style="--n: 0; --indent: 50px; --length: 133px;">
+          <div
+            class="handle"
+            data-handle-index="6"
+            data-page="6/c.html"
+            style="--handle-width: 10px; --handle-height: 13px"
+          ></div>
+        </div>
+        <div class="perpendicular-line mirrored" style="--n: 2; --indent: 30px; --length: 210px;">
+          <div
+            class="handle"
+            data-handle-index="5"
+            data-page="5/p.html"
+            style="--handle-width: 14px; --handle-height: 16px"
+          ></div>
+        </div>
+        <div class="perpendicular-line mirrored" style="--n: 4; --indent: 50px; --length: 311px;">
+          <div
+            class="handle"
+            data-handle-index="4"
+            data-page="4.html"
+            style="--handle-width: 18px; --handle-height: 22px"
+          ></div>
+        </div>
+      </div>
+    </div>
+
+    <audio id="openSound" src="open.mp3"></audio>
+    <audio id="closedSound" src="closed.mp3"></audio>
+    <audio id="lampOnSound" src="lamp_on.mp3"></audio>
+    <audio id="lampOffSound" src="lamp_off.mp3"></audio>
+    <script src="handle.js"></script>
+    <script src="lamp.js"></script>
+  </body>
+</html>

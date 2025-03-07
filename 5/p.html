@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="p.css" />
+    <link rel="stylesheet" type="text/css" href="piano.css" />
+    <title>p</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="rectangle">
+        <div class="lamp" id="themeToggle"></div>
+        <div class="line line-1"></div>
+        <div class="line line-2"></div>
+        <div class="line line-3"></div>
+        <div class="line line-4"></div>
+        <div class="line line-d"></div>
+        <div class="line line-d mirrored"></div>
+        <div class="game-container">
+          <div class="hole"></div>
+          <div id="chapter-sheet"></div>
+          <div class="door" id="door"></div>
+      </div>
+      </div>
+    </div>
+
+
+    <img id="pianoImage" src="piano.png" alt="Piano" class="piano-image">
+
+
+    <div id="pianoContainer" class="piano-container">
+      <div id="content">
+        <div id="content-inner">
+          <div id="piano"></div>
+        </div>
+      </div>
+    </div>
+
+    
+
+    <img id="backButton" src="../back.png" alt="Back" class="back-button" />
+
+    
+  
+
+    
+    
+
+    <audio id="openSound" src="../open.mp3"></audio>
+    <audio id="closedSound" src="../closed.mp3"></audio>
+    <audio id="lampOnSound" src="../lamp_on.mp3"></audio>
+    <audio id="lampOffSound" src="../lamp_off.mp3"></audio>
+    <script src="../jquery-1.7.1.min.js"></script>
+    <script src="audio.js"></script>
+    <script src="piano.js"></script>
+    <script src="../handle.js"></script>
+    <script src="../lamp.js"></script>
+    <script src="../back.js"></script>
+    <script>
+       document.addEventListener("DOMContentLoaded", function () {
+    const pianoImage = document.getElementById("pianoImage");
+    const pianoContainer = document.getElementById("pianoContainer");
+
+    // Открытие клавиш по нажатию на изображение пианино
+    pianoImage.addEventListener("click", function (event) {
+        event.stopPropagation(); // Предотвращаем закрытие при клике на само изображение
+        pianoContainer.style.display = "flex"; // Отображаем клавиши
+    });
+
+    // Закрытие клавиш по клику на любую область страницы
+    document.addEventListener("click", function (event) {
+        if (!pianoContainer.contains(event.target) && event.target !== pianoImage) {
+            pianoContainer.style.display = "none"; // Скрываем клавиши
+        }
+    });
+});
+
+    </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+    const correctSequence1 = [-5, -5, -5, -9, -2, -5, -9, -2, -5];
+    const correctSequence2 = [2, 2, 2, 3, -2, -6, -9, -2, -5];
+    let userSequence = [];
+    let stage = parseInt(localStorage.getItem('gameStage')) || 0;
+    let currentProgress = stage === 2 ? 0 : stage === 1 ? 50 : 100;
+    const door = document.getElementById('door');
+    const chapterSheet = document.getElementById('chapter-sheet');
+    const itemCollected = localStorage.getItem('item_chaptersheet') === 'collected';
+
+    function updateProgress(value) {
+        if (stage === 2) {
+            door.style.display = 'none';
+        } else {
+            door.style.background = `conic-gradient(white ${value}%, transparent ${value}%)`;
+        }
+    }
+
+    function saveProgress() {
+        localStorage.setItem('gameStage', stage);
+    }
+
+    function resetToCheckpoint() {
+        if (stage === 1) {
+            currentProgress = 50;
+        } else {
+            currentProgress = 100;
+        }
+        userSequence = [];
+        updateProgress(currentProgress);
+    }
+
+    function checkSequence(note) {
+        userSequence.push(note);
+
+        const targetSequence = stage === 0 ? correctSequence1 : correctSequence2;
+        const checkpointReached = stage === 0 && userSequence.length === correctSequence1.length;
+        const completedGame = stage === 1 && userSequence.length === correctSequence2.length;
+
+        if (userSequence[userSequence.length - 1] !== targetSequence[userSequence.length - 1]) {
+            resetToCheckpoint();
+            return;
+        }
+
+        if (checkpointReached) {
+            stage = 1;
+            currentProgress = 50;
+            userSequence = [];
+        } else if (completedGame) {
+            stage = 2;
+            currentProgress = 0;
+            userSequence = [];
+            chapterSheet.classList.add('clickable');
+            door.style.display = 'none';
+        } else {
+            currentProgress -= 50 / targetSequence.length;
+        }
+
+        updateProgress(currentProgress);
+        saveProgress();
+    }
+
+    document.addEventListener('pianoKeyPress', function (event) {
+        checkSequence(event.detail.key);
+    });
+
+    chapterSheet.addEventListener('click', function () {
+        if (stage === 2) {
+            chapterSheet.style.display = 'none';
+            localStorage.setItem('item_chaptersheet', 'collected');
+        }
+    });
+
+    if (itemCollected) {
+        chapterSheet.style.display = 'none';
+    }
+
+    updateProgress(currentProgress);
+
+    if (stage === 2) {
+        chapterSheet.classList.add('clickable');
+        door.style.display = 'none';
+    }
+});
+
+  </script>
+
+
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+  
+  
