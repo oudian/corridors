@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="../../4/k.css">
+    <title>b</title>
+    <style>
+    .column-with-musicbox {
+      position: absolute;
+      top: 70%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .music-box {
+      height: 60px;
+      cursor: pointer;
+    }
+
+    .column {
+      height: 200px;
+    }
+
+    body.dark .column-with-musicbox {
+    filter: invert(1);
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="rectangle">
+            <div class="lamp" id="themeToggle"></div>
+            <div class="line line-1"></div>
+            <div class="line line-2"></div>
+            <div class="line line-3"></div>
+            <div class="line line-4"></div>    
+        </div>
+    </div>
+    <div class="column-with-musicbox">
+        <img src="https://oudian.github.io/corridors/assets/music_box.png" alt="Music Box" class="music-box" id="musicBox">
+        <img src="https://oudian.github.io/corridors/assets/column.png" alt="Column" class="column">
+       
+      </div>
+    <img id="backButton" src="https://oudian.github.io/corridors/assets/back.png" alt="Back" class="back-button">
+    
+    <div id="inventoryButtonContainer"></div>
+    <div id="inventoryPopup" class="popup">
+      <div class="popup-content">
+        <div id="inventoryItems"></div>
+      </div>
+    </div>
+
+    <script>
+      var _$_3983=["\x44\x4F\x4D\x43\x6F\x6E\x74\x65\x6E\x74\x4C\x6F\x61\x64\x65\x64","\x69\x74\x65\x6D\x5F\x62\x75\x6C\x62","\x75\x73\x65\x64","\x67\x65\x74\x49\x74\x65\x6D","\x69\x6E\x6E\x65\x72\x48\x54\x4D\x4C","\x62\x6F\x64\x79","","\x68\x72\x65\x66","\x6C\x6F\x63\x61\x74\x69\x6F\x6E","\x68\x74\x74\x70\x73\x3A\x2F\x2F\x6F\x75\x64\x69\x61\x6E\x2E\x67\x69\x74\x68\x75\x62\x2E\x69\x6F\x2F\x63\x6F\x72\x72\x69\x64\x6F\x72\x73\x2F\x63\x2E\x68\x74\x6D\x6C","\x61\x64\x64\x45\x76\x65\x6E\x74\x4C\x69\x73\x74\x65\x6E\x65\x72"];
+document[_$_3983[10]](_$_3983[0],function()
+{
+	const _0x2548D=_$_3983[1];//1
+	const _0x254E1=_$_3983[2];//2
+	if(localStorage[_$_3983[3]](_0x2548D)!== _0x254E1)
+	{
+		document[_$_3983[5]][_$_3983[4]]= _$_3983[6];setTimeout(()=>
+		{
+			window[_$_3983[8]][_$_3983[7]]= _$_3983[9]
+		}
+		,1000)
+	}
+	
+}
+)
+    
+    </script>
+    <script>
+ 
+var _$_4e03=["\x6D\x75\x73\x69\x63\x42\x6F\x78","\x67\x65\x74\x45\x6C\x65\x6D\x65\x6E\x74\x42\x79\x49\x64","\x69\x74\x65\x6D\x5F\x6D\x75\x73\x69\x63\x5F\x62\x6F\x78","\x67\x65\x74\x49\x74\x65\x6D","\x63\x6F\x6C\x6C\x65\x63\x74\x65\x64","\x64\x69\x73\x70\x6C\x61\x79","\x73\x74\x79\x6C\x65","\x6E\x6F\x6E\x65","\x63\x6C\x69\x63\x6B","\x73\x65\x74\x49\x74\x65\x6D","\x72\x65\x6C\x6F\x61\x64","\x61\x64\x64\x45\x76\x65\x6E\x74\x4C\x69\x73\x74\x65\x6E\x65\x72"];
+const musicBox=document[_$_4e03[1]](_$_4e03[0]);//0
+if(localStorage[_$_4e03[3]](_$_4e03[2])=== _$_4e03[4])
+{
+	musicBox[_$_4e03[6]][_$_4e03[5]]= _$_4e03[7]
+}
+//2
+musicBox[_$_4e03[11]](_$_4e03[8],()=>
+{
+	musicBox[_$_4e03[6]][_$_4e03[5]]= _$_4e03[7];localStorage[_$_4e03[9]](_$_4e03[2],_$_4e03[4]);location[_$_4e03[10]]()
+}
+)
+      </script>
+    <script src="../../../lamp.js"></script>
+    <script src="../../../handle.js"></script>
+    <script src="../../../back.js"></script>
+    <script src="../../../inventory.js"></script>
+    <script src="phone.js"></script>
+</body>
+</html>

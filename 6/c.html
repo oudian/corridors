@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+	<link rel="stylesheet" href="../index.css">
+    <title>66</title>
+    <style>
+      @font-face {
+  font-family: 'Spirit';
+  src: url('../spirit.otf') format('opentype');
+}
+
+      body.dark #label-3 {
+        color: rgb(255, 0, 0);
+        font-family: 'Spirit', sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="rectangle">
+        <div class="lamp" id="themeToggle"></div>
+        <div class="line line-1"></div>
+        <div class="line line-2"></div>
+        <div class="line line-3"></div>
+        <div class="line line-4"></div>
+        <div class="line line-d"></div>
+        <div class="line line-d mirrored"></div>
+
+        <div class="perpendicular-line" style="--n: 0; --indent: 50px; --length: 133px;"></div>
+        <div class="perpendicular-line" style="--n: 1; --indent: 20px; --length: 158px;"></div>
+        <div class="perpendicular-line" style="--n: 2; --indent: 30px; --length: 210px;"></div>
+        <div class="perpendicular-line" style="--n: 3; --indent: 20px; --length: 248px;"></div>
+        <div class="perpendicular-line" style="--n: 4; --indent: 50px; --length: 311px;"></div>
+        <div class="perpendicular-line" style="--n: 5; --indent: 60px; --length: 363px;"></div>
+
+        <div class="perpendicular-line mirrored" style="--n: 0; --indent: 50px; --length: 133px;"></div>
+        <div class="perpendicular-line mirrored" style="--n: 1; --indent: 20px; --length: 158px;"></div>
+        <div class="perpendicular-line mirrored" style="--n: 2; --indent: 30px; --length: 210px;"></div>
+        <div class="perpendicular-line mirrored" style="--n: 3; --indent: 20px; --length: 248px;"></div>
+        <div class="perpendicular-line mirrored" style="--n: 4; --indent: 50px; --length: 311px;"></div>
+        <div class="perpendicular-line mirrored" style="--n: 5; --indent: 60px; --length: 363px;"></div>
+
+        <div class="perpendicular-line" style="--n: 0; --indent: 50px; --length: 133px;">
+          <div class="label" id="label-3">3</div>
+          <div class="handle" data-handle-index="0" data-page="3.html" style="--handle-width: 10px; --handle-height: 13px"></div>
+        </div>
+        
+        <div class="perpendicular-line" style="--n: 2; --indent: 30px; --length: 210px;">
+          <div class="label" id="label-2">2</div>
+          <div class="handle" data-handle-index="0" data-page="2.html" style="--handle-width: 14px; --handle-height: 16px"></div>
+        </div>
+        
+        <div class="perpendicular-line" style="--n: 4; --indent: 50px; --length: 311px;">
+          <div class="label" id="label-1">1</div>
+          <div class="handle" data-handle-index="0" data-page="1.html" style="--handle-width: 18px; --handle-height: 22px"></div>
+        </div>
+        
+        
+        <div class="perpendicular-line mirrored" style="--n: 0; --indent: 50px; --length: 133px;">
+          <div class="label" id="label-6">6</div>
+          <div class="handle" data-handle-index="666" data-page="6/c.html" style="--handle-width: 10px; --handle-height: 13px"></div>
+        </div>
+        
+        <div class="perpendicular-line mirrored" style="--n: 2; --indent: 30px; --length: 210px;">
+          <div class="label" id="label-5">5</div>
+          <div class="handle" data-handle-index="0" data-page="5.html" style="--handle-width: 14px; --handle-height: 16px"></div>
+        </div>
+        
+        <div class="perpendicular-line mirrored" style="--n: 4; --indent: 50px; --length: 311px;">
+          <div class="label" id="label-4">4</div>
+          <div class="handle" data-handle-index="k" data-page="4/k.html" style="--handle-width: 18px; --handle-height: 22px"></div>
+        </div>
+    </div>
+    <img id="backButton" src="https://oudian.github.io/corridors/assets/back.png" alt="Back" class="back-button"> 
+
+    <div id="inventoryButtonContainer"></div>
+    <div id="inventoryPopup" class="popup">
+      <div class="popup-content">
+        <div id="inventoryItems"></div>
+      </div>
+    </div>
+
+
+    <script src="../handle.js"></script>
+    <script src="../lamp.js"></script>
+    <script src="../back.js"></script>
+    <script src="../inventory.js"></script>
+    <script src="../phone.js"></script>
+  </body>
+</html>

@@ -1,0 +1,338 @@
+body {
+        background: white;
+        color: black;
+        margin: 0;
+        font-family: sans-serif;
+      }
+      body.dark {
+        background: black;
+        color: white;
+      }
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 70vh;
+        position: relative;
+        overflow: visible;
+      }
+      .rectangle {
+        width: 300px;
+        height: 200px;
+        border: 1px solid #000;
+        position: relative;
+        background: transparent;
+        overflow: visible;
+      }
+      body.dark .rectangle {
+        border-color: white;
+      }
+      .lamp {
+        position: absolute;
+        top: -100px; 
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 30px;
+        background: yellow;
+        border-radius: 50%;
+        cursor: pointer;
+        z-index: 2;
+      }
+      body.dark .lamp {
+        background: grey;
+        border-color: white;
+      }
+      .line {
+        position: absolute;
+        background: #000;
+        height: 1px;
+        width: 500%;
+      }
+      body.dark .line {
+        background: white;
+      }
+      .line-1 {
+        left: 0;
+        top: 0;
+        transform: rotate(-170deg);
+        transform-origin: left top;
+      }
+      .line-2 {
+        right: 0;
+        top: 0;
+        transform: rotate(170deg);
+        transform-origin: right top;
+      }
+      .line-3 {
+        left: 0;
+        bottom: 0;
+        transform: rotate(135deg);
+        transform-origin: left bottom;
+      }
+      .line-4 {
+        right: 0;
+        bottom: 0;
+        transform: rotate(-135deg);
+        transform-origin: right bottom;
+      }
+      .line-d {
+        left: 0;
+        bottom: 100px;
+        transform: rotate(160deg);
+        transform-origin: left center;
+      }
+      .line-d.mirrored {
+        left: auto;
+        right: 0;
+        bottom: 100px;
+        transform: rotate(-160deg);
+        transform-origin: right center;
+      }
+      .perpendicular-line {
+        position: absolute;
+        left: calc(-70.7px * var(--n, 0) - var(--indent, 0px));
+        bottom: calc(-70.7px * var(--n, 0) - var(--indent, 0px));
+        width: 1px;
+        height: var(--length, 200px);
+        background: black;
+        transform: rotate(360deg);
+        transform-origin: left bottom;
+      }
+      body.dark .perpendicular-line {
+        background: white;
+      }
+      .perpendicular-line.mirrored {
+        left: auto;
+        right: calc(-70.7px * var(--n, 0) - var(--indent, 0px));
+        transform-origin: right bottom;
+      }
+      .handle {
+        position: absolute;
+        left: calc(-5px - var(--handle-width, 20px));
+        top: 50%;
+        transform: translateY(-50%);
+        width: var(--handle-width, 10px);
+        height: var(--handle-height, 10px);
+        border: 1px solid #000;
+        border-radius: 50%;
+        background: white;
+        z-index: 1;
+        box-sizing: border-box;
+        cursor: pointer;
+      }
+      body.dark .handle {
+        background: black;
+        border-color: white;
+      }
+      .perpendicular-line.mirrored .handle {
+        left: auto;
+        right: calc(-5px - var(--handle-width, 20px));
+      }
+
+
+      #inventoryButtonContainer {
+        position: fixed;
+        top: 50px;
+        left: 50px;
+        z-index: 1000;
+      }
+      
+      #inventoryItems {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+      }
+      
+      
+      .popup {
+        display: none;
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        border: 1px solid black;
+        background: white;
+        padding: 20px;
+        z-index: 1000;
+      }
+      
+      .popup-content {
+        display: flex;
+        flex-direction: row; 
+        flex-wrap: wrap; 
+        justify-content: center;
+        gap: 10px; 
+      }
+      
+      .item {
+        border: 1px solid black;
+        width: 100px;
+        height: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden; 
+      }
+      
+      .item img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain; 
+      }
+      
+      
+      body.dark .popup {
+        background: black;
+        color: white;
+        border-color: white;
+      }
+      
+      body.dark .item {
+        border-color: white;
+      }
+      
+      body.dark .item img {
+        filter: invert(1);
+      }
+      
+      body.dark #inventoryButtonContainer img {
+        filter: invert(1);
+      }
+
+      .back-button {
+        position: fixed;
+        bottom: 20px; 
+        left: 50%;
+        transform: translateX(-50%);
+        width: 150px; 
+        height: auto;
+        z-index: 1000;
+        filter: invert(0);
+        transition: filter 0.3s ease, transform 0.3s ease;
+      }
+
+      body.dark .description-box {
+        background: black;
+        color: white;
+        border-color: white;
+      }
+
+      body.dark .inspect {
+        background-color: #000;
+        color: white;
+        border-color: white;
+      }
+
+      body.dark .use {
+        background-color: #000;
+        color: white;
+        border-color: white;
+      }
+
+      body.dark .back-button {
+        filter: invert(1);
+      }
+      
+      .inventory-button {
+        cursor: pointer;
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        width: 100px;
+        height: 100px;
+      }
+      
+      .item-image {
+        width: 90%;
+        height: 90%;
+      }
+      
+      .action-popup {
+        position: fixed;
+        background: transparent;
+        padding: 5px;
+        display: flex;
+        flex-direction: column;
+        width: 200px;
+        z-index: 9999;
+      }
+      
+      .action-popup button {
+        width: 100%;
+        height: 30px;
+        background: white;
+        border: 1px solid black;
+        cursor: pointer;
+      }
+      
+      .description-box {
+        position: fixed;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: white;
+        border: 1px solid black;
+        padding: 10px;
+        z-index: 9999;
+      }
+      
+      .door-number {
+        text-align: center;
+        font-size: 16px;
+        font-weight: bold;
+        color: black; 
+        margin-bottom: 4px;
+      }
+
+      .label {
+        position: absolute;
+        z-index: 500;
+        font-weight: bold;
+        pointer-events: none;
+      }
+      
+      #label-1 {
+        top: 70px;
+        left: -47px;
+        font-size: 30px;
+
+      }
+      #label-2 {
+        top: 50px;
+        left: -38px;
+        font-size: 25px;
+      }
+      #label-3 {
+        top: 30px;
+        left: -25px;
+        font-size: 17px;
+      }
+      
+      #label-4 {
+        top: 70px;
+        right: -47px;
+        font-size: 30px;
+
+      }
+      #label-5 {
+        top: 50px;
+        right: -38px;
+        font-size: 25px;
+      }
+      #label-6 {
+        top: 30px;
+        right: -25px;
+        font-size: 17px;
+      }
+
+    
+      
+     
+    
+    
+      
+ 
+

@@ -1,0 +1,358 @@
+      body {
+        background: white;
+        color: black;
+        margin: 0;
+        font-family: sans-serif;
+      }
+      body.dark {
+        background: black;
+        color: white;
+      }
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        position: relative;
+        overflow: visible;
+      }
+      .rectangle {
+        width: 1000px;
+        height: 500px;
+        border: 1px solid #000;
+        position: relative;
+        background: transparent;
+        overflow: visible;
+      }
+      body.dark .rectangle {
+        border-color: white;
+      }
+      .lamp {
+        position: absolute;
+        top: -100px; 
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 30px;
+        background: yellow;
+        border-radius: 50%;
+        cursor: pointer;
+        z-index: 2;
+      }
+      body.dark .lamp {
+        background: grey;
+        border-color: white;
+      }
+      .line {
+        position: absolute;
+        background: #000;
+        height: 1px;
+        width: 100%;
+      }
+      body.dark .line {
+        background: white;
+      }
+      .line-1 {
+        left: 0;
+        top: 0;
+        transform: rotate(-170deg);
+        transform-origin: left top;
+      }
+      .line-2 {
+        right: 0;
+        top: 0;
+        transform: rotate(170deg);
+        transform-origin: right top;
+      }
+      .line-3 {
+        left: 0;
+        bottom: 0;
+        transform: rotate(135deg);
+        transform-origin: left bottom;
+      }
+      .line-4 {
+        right: 0;
+        bottom: 0;
+        transform: rotate(-135deg);
+        transform-origin: right bottom;
+      }
+      .line-d {
+        left: 0;
+        bottom: 250px;
+        transform: rotate(160deg);
+        transform-origin: left center;
+      }
+      .line-d.mirrored {
+        left: auto;
+        right: 0;
+        bottom: 250px;
+        transform: rotate(-160deg);
+        transform-origin: right center;
+      }
+      .perpendicular-line {
+        position: absolute;
+        left: calc(-70.7px * var(--n, 0) - var(--indent, 0px));
+        bottom: calc(-70.7px * var(--n, 0) - var(--indent, 0px));
+        width: 1px;
+        height: var(--length, 200px);
+        background: black;
+        transform: rotate(360deg);
+        transform-origin: left bottom;
+      }
+      body.dark .perpendicular-line {
+        background: white;
+      }
+      .perpendicular-line.mirrored {
+        left: auto;
+        right: calc(-70.7px * var(--n, 0) - var(--indent, 0px));
+        transform-origin: right bottom;
+      }
+      .handle {
+        position: absolute;
+        left: calc(-5px - var(--handle-width, 20px));
+        top: 50%;
+        transform: translateY(-50%);
+        width: var(--handle-width, 10px);
+        height: var(--handle-height, 10px);
+        border: 1px solid #000;
+        border-radius: 50%;
+        background: white;
+        z-index: 1;
+        box-sizing: border-box;
+        cursor: pointer;
+      }
+      body.dark .handle {
+        background: black;
+        border-color: white;
+      }
+      .perpendicular-line.mirrored .handle {
+        left: auto;
+        right: calc(-5px - var(--handle-width, 20px));
+      }
+
+      .back-button {
+        position: fixed;
+        bottom: 20px; 
+        left: 50%;
+        transform: translateX(-50%);
+        width: 150px; 
+        height: auto;
+        z-index: 1000;
+        filter: invert(0);
+        transition: filter 0.3s ease, transform 0.3s ease;
+    }
+    
+    body.dark .back-button {
+        filter: invert(1);
+    }
+
+  
+
+
+  body.dark .door {
+    filter: invert(1);
+}
+
+
+#inventoryButtonContainer {
+  position: fixed;
+  top: 50px;
+  left: 50px;
+  z-index: 1000;
+}
+
+#inventoryItems {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+
+.popup {
+  display: none;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid black;
+  background: white;
+  padding: 20px;
+  z-index: 1000;
+}
+
+.popup-content {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap; 
+  justify-content: center;
+  gap: 10px; 
+}
+
+.item {
+  border: 1px solid black;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.item img {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain; 
+}
+
+
+body.dark .popup {
+  background: black;
+  color: white;
+  border-color: white;
+}
+
+body.dark .item {
+  border-color: white;
+}
+
+body.dark .item img {
+  filter: invert(1);
+}
+
+body.dark #inventoryButtonContainer img {
+  filter: invert(1);
+}
+
+.back-button {
+  position: fixed;
+  bottom: 20px; 
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150px; 
+  height: auto;
+  z-index: 1000;
+  filter: invert(0);
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+body.dark .description-box {
+  background: black;
+  color: white;
+  border-color: white;
+}
+
+body.dark .inspect {
+  background-color: #000;
+  color: white;
+  border-color: white;
+}
+
+body.dark .use {
+  background-color: #000;
+  color: white;
+  border-color: white;
+}
+
+body.dark .back-button {
+  filter: invert(1);
+}
+
+.inventory-button {
+  cursor: pointer;
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  width: 100px;
+  height: 100px;
+}
+
+.item-image {
+  width: 90%;
+  height: 90%;
+}
+
+.action-popup {
+  position: fixed;
+  background: transparent;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  z-index: 9999;
+}
+
+.action-popup button {
+  width: 100%;
+  height: 30px;
+  background: white;
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+.description-box {
+  position: fixed;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  border: 1px solid black;
+  padding: 10px;
+  z-index: 9999;
+}
+
+
+
+.machine {
+  position: absolute; 
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 150px;
+  height: auto;
+  cursor: pointer;
+  z-index: 1000;
+  filter: invert(0);
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5); 
+}
+
+#gameModalContent {
+  background-color: white; 
+  padding: 20px;
+  width: 60%;
+  position: fixed; 
+  top: 50%; 
+  left: 50%; 
+  transform: translate(-50%, -50%); 
+  border: 1px solid #888;
+  box-sizing: border-box; 
+}
+
+#keyContainer {
+  position: relative;
+}
+
+#workbenchBtn {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  cursor: pointer;
+  height: 50px;
+}
+
+body.dark .machine {
+  filter: invert(1);
+}
+

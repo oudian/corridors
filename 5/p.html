@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="p.css" />
+    <link rel="stylesheet" type="text/css" href="piano.css" />
+    <title>p</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="rectangle">
+        <div class="lamp" id="themeToggle"></div>
+        <div class="line line-1"></div>
+        <div class="line line-2"></div>
+        <div class="line line-3"></div>
+        <div class="line line-4"></div>
+        <div class="line line-d"></div>
+        <div class="line line-d mirrored"></div>
+        <div class="game-container">
+          <div class="hole"></div>
+          <div id="chapter-sheet"></div>
+          <div class="door" id="door"></div>
+      </div>
+      </div>
+    </div>
+
+
+    <img id="pianoImage" src="../assets/piano.png" alt="Piano" class="piano-image">
+
+
+    <div id="pianoContainer" class="piano-container">
+      <div id="content">
+        <div id="content-inner">
+          <div id="piano"></div>
+        </div>
+      </div>
+    </div>
+
+    
+
+    <img id="backButton" src="https://oudian.github.io/corridors/assets/back.png" alt="Back" class="back-button">
+
+
+    <div id="inventoryButtonContainer"></div>
+    <div id="inventoryPopup" class="popup">
+      <div class="popup-content">
+        <div id="inventoryItems"></div>
+      </div>
+    </div>
+
+    
+
+    <script src="../jquery-1.7.1.min.js"></script>
+    <script src="audio.js"></script>
+    <script src="piano.js"></script>
+    <script src="../handle.js"></script>
+    <script src="../lamp.js"></script>
+    <script src="../back.js"></script>
+    <script src="../inventory.js"></script>
+    <script src="phone.js"></script>
+    
+    <script>
+       var _$_e03a=["\x44\x4F\x4D\x43\x6F\x6E\x74\x65\x6E\x74\x4C\x6F\x61\x64\x65\x64","\x70\x69\x61\x6E\x6F\x49\x6D\x61\x67\x65","\x67\x65\x74\x45\x6C\x65\x6D\x65\x6E\x74\x42\x79\x49\x64","\x70\x69\x61\x6E\x6F\x43\x6F\x6E\x74\x61\x69\x6E\x65\x72","\x63\x6C\x69\x63\x6B","\x73\x74\x6F\x70\x50\x72\x6F\x70\x61\x67\x61\x74\x69\x6F\x6E","\x64\x69\x73\x70\x6C\x61\x79","\x73\x74\x79\x6C\x65","\x66\x6C\x65\x78","\x61\x64\x64\x45\x76\x65\x6E\x74\x4C\x69\x73\x74\x65\x6E\x65\x72","\x74\x61\x72\x67\x65\x74","\x63\x6F\x6E\x74\x61\x69\x6E\x73","\x6E\x6F\x6E\x65"];
+document[_$_e03a[9]](_$_e03a[0],function()
+{
+	const _0x22F86=document[_$_e03a[2]](_$_e03a[1]);//1
+	const _0x22F7C=document[_$_e03a[2]](_$_e03a[3]);//2
+	_0x22F86[_$_e03a[9]](_$_e03a[4],function(_0x22F90)
+	{
+		_0x22F90[_$_e03a[5]]();_0x22F7C[_$_e03a[7]][_$_e03a[6]]= _$_e03a[8]
+	}
+	);document[_$_e03a[9]](_$_e03a[4],function(_0x22F90)
+	{
+		if(!_0x22F7C[_$_e03a[11]](_0x22F90[_$_e03a[10]])&& _0x22F90[_$_e03a[10]]!== _0x22F86)
+		{
+			_0x22F7C[_$_e03a[7]][_$_e03a[6]]= _$_e03a[12]
+		}
+		
+	}
+	)
+}
+)
+
+    </script>
+  <script>
+    var _$_6684=["\x44\x4F\x4D\x43\x6F\x6E\x74\x65\x6E\x74\x4C\x6F\x61\x64\x65\x64","\x67\x61\x6D\x65\x53\x74\x61\x67\x65","\x67\x65\x74\x49\x74\x65\x6D","\x64\x6F\x6F\x72","\x67\x65\x74\x45\x6C\x65\x6D\x65\x6E\x74\x42\x79\x49\x64","\x63\x68\x61\x70\x74\x65\x72\x2D\x73\x68\x65\x65\x74","\x69\x74\x65\x6D\x5F\x63\x68\x61\x70\x74\x65\x72\x73\x68\x65\x65\x74","\x63\x6F\x6C\x6C\x65\x63\x74\x65\x64","\x64\x69\x73\x70\x6C\x61\x79","\x73\x74\x79\x6C\x65","\x6E\x6F\x6E\x65","\x62\x61\x63\x6B\x67\x72\x6F\x75\x6E\x64","\x25\x2C\x20\x74\x72\x61\x6E\x73\x70\x61\x72\x65\x6E\x74\x20","\x25\x29","\x73\x65\x74\x49\x74\x65\x6D","\x70\x75\x73\x68","\x6C\x65\x6E\x67\x74\x68","\x63\x6C\x69\x63\x6B\x61\x62\x6C\x65","\x61\x64\x64","\x63\x6C\x61\x73\x73\x4C\x69\x73\x74","\x70\x69\x61\x6E\x6F\x4B\x65\x79\x50\x72\x65\x73\x73","\x6B\x65\x79","\x64\x65\x74\x61\x69\x6C","\x61\x64\x64\x45\x76\x65\x6E\x74\x4C\x69\x73\x74\x65\x6E\x65\x72","\x63\x6C\x69\x63\x6B","\x72\x65\x6C\x6F\x61\x64"];
+document[_$_6684[23]](_$_6684[0],function()
+{
+	const _0x14AFA=[-5,-5,-5,-9,-2,-5,-9,-2,-5];//1
+	const _0x14B1A=[2,2,2,3,-2,-6,-9,-2,-5];//2
+	let _0x14C1A=[];//3
+	let _0x14BDA=parseInt(localStorage[_$_6684[2]](_$_6684[1]))|| 0;//4
+	let _0x14B3A=_0x14BDA=== 2?0:_0x14BDA=== 1?50:100;//5
+	const _0x14B5A=document[_$_6684[4]](_$_6684[3]);//6
+	const _0x14ABA=document[_$_6684[4]](_$_6684[5]);//7
+	const _0x14B7A=localStorage[_$_6684[2]](_$_6684[6])=== _$_6684[7];//8
+	function _0x14BFA(_0x14CDA)
+	{
+		if(_0x14BDA=== 2)
+		{
+			_0x14B5A[_$_6684[9]][_$_6684[8]]= _$_6684[10]
+		}
+		else 
+		{
+			_0x14B5A[_$_6684[9]][_$_6684[11]]= ("\x63\x6F\x6E\x69\x63\x2D\x67\x72\x61\x64\x69\x65\x6E\x74\x28\x77\x68\x69\x74\x65\x20"+_0x14CDA+_$_6684[12]+_0x14CDA+_$_6684[13])
+		}
+		
+	}
+	function _0x14BBA()
+	{
+		localStorage[_$_6684[14]](_$_6684[1],_0x14BDA)
+	}
+	function _0x14B9A()
+	{
+		if(_0x14BDA=== 1)
+		{
+			_0x14B3A= 50
+		}
+		else 
+		{
+			_0x14B3A= 100
+		}
+		//23
+		_0x14C1A= [];_0x14BFA(_0x14B3A)
+	}
+	function _0x14ADA(_0x14C9A)
+	{
+		_0x14C1A[_$_6684[15]](_0x14C9A);const _0x14CBA=_0x14BDA=== 0?_0x14AFA:_0x14B1A;//35
+		const _0x14C5A=_0x14BDA=== 0&& _0x14C1A[_$_6684[16]]=== _0x14AFA[_$_6684[16]];//36
+		const _0x14C7A=_0x14BDA=== 1&& _0x14C1A[_$_6684[16]]=== _0x14B1A[_$_6684[16]];//37
+		if(_0x14C1A[_0x14C1A[_$_6684[16]]- 1]!== _0x14CBA[_0x14C1A[_$_6684[16]]- 1])
+		{
+			_0x14B9A();return
+		}
+		//39
+		if(_0x14C5A)
+		{
+			_0x14BDA= 1;_0x14B3A= 50;_0x14C1A= []
+		}
+		else 
+		{
+			if(_0x14C7A)
+			{
+				_0x14BDA= 2;_0x14B3A= 0;_0x14C1A= [];_0x14ABA[_$_6684[19]][_$_6684[18]](_$_6684[17]);_0x14B5A[_$_6684[9]][_$_6684[8]]= _$_6684[10]
+			}
+			else 
+			{
+				_0x14B3A-= 50/ _0x14CBA[_$_6684[16]]
+			}
+			
+		}
+		//44
+		_0x14BFA(_0x14B3A);_0x14BBA()
+	}
+	document[_$_6684[23]](_$_6684[20],function(_0x14C3A)
+	{
+		_0x14ADA(_0x14C3A[_$_6684[22]][_$_6684[21]])
+	}
+	);_0x14ABA[_$_6684[23]](_$_6684[24],function()
+	{
+		if(_0x14BDA=== 2)
+		{
+			_0x14ABA[_$_6684[9]][_$_6684[8]]= _$_6684[10];localStorage[_$_6684[14]](_$_6684[6],_$_6684[7]);location[_$_6684[25]]()
+		}
+		
+	}
+	);if(_0x14B7A)
+	{
+		_0x14ABA[_$_6684[9]][_$_6684[8]]= _$_6684[10]
+	}
+	//74
+	_0x14BFA(_0x14B3A);if(_0x14BDA=== 2)
+	{
+		_0x14ABA[_$_6684[19]][_$_6684[18]](_$_6684[17]);_0x14B5A[_$_6684[9]][_$_6684[8]]= _$_6684[10]
+	}
+	
+}
+)
+
+  </script>
+
+
+
+<script>
+var _$_b620=["\x44\x4F\x4D\x43\x6F\x6E\x74\x65\x6E\x74\x4C\x6F\x61\x64\x65\x64","\x69\x74\x65\x6D\x5F\x6B\x65\x79\x5F\x31\x33\x30\x35","\x75\x73\x65\x64","\x67\x65\x74\x49\x74\x65\x6D","\x69\x6E\x6E\x65\x72\x48\x54\x4D\x4C","\x62\x6F\x64\x79","","\x68\x72\x65\x66","\x6C\x6F\x63\x61\x74\x69\x6F\x6E","\x68\x74\x74\x70\x73\x3A\x2F\x2F\x6F\x75\x64\x69\x61\x6E\x2E\x67\x69\x74\x68\x75\x62\x2E\x69\x6F\x2F\x63\x6F\x72\x72\x69\x64\x6F\x72\x73\x2F\x63\x2E\x68\x74\x6D\x6C","\x61\x64\x64\x45\x76\x65\x6E\x74\x4C\x69\x73\x74\x65\x6E\x65\x72"];
+document[_$_b620[10]](_$_b620[0],function()
+{
+	const _0xB828=_$_b620[1];//1
+	const _0xB834=_$_b620[2];//2
+	if(localStorage[_$_b620[3]](_0xB828)!== _0xB834)
+	{
+		document[_$_b620[5]][_$_b620[4]]= _$_b620[6];setTimeout(()=>
+		{
+			window[_$_b620[8]][_$_b620[7]]= _$_b620[9]
+		}
+		,1000)
+	}
+	
+}
+)
+
+
+</script>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+  
+  

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Key</title>
+  <style>
+    body {
+      margin: 0;
+    }
+    .key_container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #ffffff;
+    }
+    .key {
+      position: relative;
+      margin-bottom: 20px;
+    }
+    .blade {
+      width: 400px;
+      height: 75px;
+      background-color: rgb(105, 100, 100);
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1;
+    }
+    .bow {
+      width: 200px;
+      height: 200px;
+      background-color: rgb(105, 100, 100);
+      border-radius: 50%;
+      position: absolute;
+      bottom: -65px;
+      left: 100%;
+      transform: translateX(-50%);
+      z-index: 2;
+    }
+    .keyhole {
+      width: 50px;
+      height: 50px;
+      background-color: white;
+      border-radius: 100%;
+      position: absolute;
+      top: 70px;
+      left: 140px;
+      transform: translateX(-50%);
+      z-index: 3;
+    }
+    .tip1 {
+      width: 0;
+      height: 0;
+      border-bottom: 40px solid rgb(255, 255, 255); 
+      border-right: 40px solid transparent;
+      position: absolute;
+      top: 40px;
+      left: 0px;
+    }
+    .tip2 {
+      width: 0;
+      height: 0;
+      border-top: 30px solid rgb(255, 255, 255); 
+      border-right: 30px solid transparent;
+      position: absolute;
+      top: 0px;
+      left: 0px;
+    }
+    .cut {
+      width: 0;
+      height: 0;
+      border-left: 25px solid transparent;
+      border-right: 25px solid transparent;
+      border-top: 30px solid rgb(255, 255, 255);
+      position: absolute;
+      top: -30px;
+    }
+    .cut1 { left: 30px; }
+    .cut2 { left: 90px; }
+    .cut3 { left: 150px; }
+    .cut4 { left: 210px; }
+    .controls {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .digit-controls {
+      display: flex;
+      gap: 10px;
+      margin-top: 50px;
+      margin-bottom: 10px;
+      z-index: 5;
+    }
+    .digit-control {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .digit-control .digit {
+      font-size: 16px;
+      width: 50px;
+      text-align: center;
+      padding: 5px;
+      background: #fff;
+      border: 1px solid #ccc;
+      margin: 5px 0;
+    }
+    .digit-control button.triangle {
+      background: none;
+      border: none;
+      font-size: 18px;
+      cursor: pointer;
+    }
+    button {
+      background-color: #ffffff;
+      color: rgb(0, 0, 0);
+      border: 1px solid black;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+  </style>
+</head>
+<body>
+  <div class="key_container">
+    <div class="key">
+      <div class="blade">
+        <div class="tip1"></div>
+        <div class="tip2"></div>
+        <div class="cut cut1"></div>
+        <div class="cut cut2"></div>
+        <div class="cut cut3"></div>
+        <div class="cut cut4"></div>
+        <div class="bow">
+          <div class="keyhole"></div>
+        </div>
+      </div>
+    </div>
+    <div class="controls">
+      <div class="digit-controls">
+        <div class="digit-control" data-id="cut1">
+          <button class="triangle up" id="up_cut1">▲</button>
+          <span class="digit" id="digit_cut1">0</span>
+          <button class="triangle down" id="down_cut1">▼</button>
+        </div>
+        <div class="digit-control" data-id="cut2">
+          <button class="triangle up" id="up_cut2">▲</button>
+          <span class="digit" id="digit_cut2">0</span>
+          <button class="triangle down" id="down_cut2">▼</button>
+        </div>
+        <div class="digit-control" data-id="cut3">
+          <button class="triangle up" id="up_cut3">▲</button>
+          <span class="digit" id="digit_cut3">0</span>
+          <button class="triangle down" id="down_cut3">▼</button>
+        </div>
+        <div class="digit-control" data-id="cut4">
+          <button class="triangle up" id="up_cut4">▲</button>
+          <span class="digit" id="digit_cut4">0</span>
+          <button class="triangle down" id="down_cut4">▼</button>
+        </div>
+      </div>
+      <button id="save">Изготовить</button>
+    </div>
+  </div>
+  <script>
+    var _$_88cd=["\x63\x75\x74\x31","\x63\x75\x74\x32","\x63\x75\x74\x33","\x63\x75\x74\x34","\x64\x69\x67\x69\x74\x5F","\x67\x65\x74\x45\x6C\x65\x6D\x65\x6E\x74\x42\x79\x49\x64","\x75\x70\x5F","\x64\x6F\x77\x6E\x5F","\x2E","\x71\x75\x65\x72\x79\x53\x65\x6C\x65\x63\x74\x6F\x72","\x76\x69\x73\x69\x62\x69\x6C\x69\x74\x79","\x73\x74\x79\x6C\x65","\x68\x69\x64\x64\x65\x6E","\x76\x69\x73\x69\x62\x6C\x65","\x63\x6C\x69\x63\x6B","\x74\x65\x78\x74\x43\x6F\x6E\x74\x65\x6E\x74","\x74\x6F\x70","\x70\x78","\x61\x64\x64\x45\x76\x65\x6E\x74\x4C\x69\x73\x74\x65\x6E\x65\x72","\x66\x6F\x72\x45\x61\x63\x68","\x73\x61\x76\x65","\x64\x69\x73\x61\x62\x6C\x65\x64","","\x67\x65\x74\x49\x74\x65\x6D","\x63\x6F\x6C\x6C\x65\x63\x74\x65\x64","\x70\x75\x73\x68","\x6C\x65\x6E\x67\x74\x68","\x72\x61\x6E\x64\x6F\x6D","\x66\x6C\x6F\x6F\x72","\x75\x73\x65\x64","\x73\x65\x74\x49\x74\x65\x6D","\x6A\x6F\x69\x6E","\x6D\x61\x70","\x68\x74\x74\x70\x73\x3A\x2F\x2F\x6F\x75\x64\x69\x61\x6E\x2E\x67\x69\x74\x68\x75\x62\x2E\x69\x6F\x2F\x63\x6F\x72\x72\x69\x64\x6F\x72\x73\x2F\x61\x73\x73\x65\x74\x73\x2F\x6D\x61\x63\x68\x69\x6E\x65\x2E\x6D\x70\x33","\x70\x6C\x61\x79","\x72\x65\x6C\x6F\x61\x64","\x64\x69\x73\x70\x6C\x61\x79","\x2E\x6B\x65\x79","\x6E\x6F\x6E\x65"];
+const positions=[-30,-20,-15,-10,-5,0];//0
+const controls=[_$_88cd[0],_$_88cd[1],_$_88cd[2],_$_88cd[3]];//1
+controls[_$_88cd[19]]((_0x9609)=>
+{
+	let _0x9636=0;//4
+	const _0x95EB=document[_$_88cd[5]](_$_88cd[4]+ _0x9609);//5
+	const _0x9618=document[_$_88cd[5]](_$_88cd[6]+ _0x9609);//6
+	const _0x95FA=document[_$_88cd[5]](_$_88cd[7]+ _0x9609);//7
+	const _0x95DC=document[_$_88cd[9]](_$_88cd[8]+ _0x9609);//8
+	function _0x9627()
+	{
+		_0x95FA[_$_88cd[11]][_$_88cd[10]]= _0x9636=== 0?_$_88cd[12]:_$_88cd[13];_0x9618[_$_88cd[11]][_$_88cd[10]]= _0x9636=== 5?_$_88cd[12]:_$_88cd[13]
+	}
+	_0x9627();_0x9618[_$_88cd[18]](_$_88cd[14],()=>
+	{
+		if(_0x9636< 5)
+		{
+			_0x9636++;_0x95EB[_$_88cd[15]]= _0x9636;_0x95DC[_$_88cd[11]][_$_88cd[16]]= positions[_0x9636]+ _$_88cd[17];_0x9627()
+		}
+		
+	}
+	);_0x95FA[_$_88cd[18]](_$_88cd[14],()=>
+	{
+		if(_0x9636> 0)
+		{
+			_0x9636--;_0x95EB[_$_88cd[15]]= _0x9636;_0x95DC[_$_88cd[11]][_$_88cd[16]]= positions[_0x9636]+ _$_88cd[17];_0x9627()
+		}
+		
+	}
+	)
+}
+);document[_$_88cd[5]](_$_88cd[20])[_$_88cd[18]](_$_88cd[14],()=>
+{
+	let _0x9690=document[_$_88cd[5]](_$_88cd[20]);//37
+	_0x9690[_$_88cd[21]]= true;let _0x9654=[];//39
+	for(let i=1;i<= 8;i++)
+	{
+		let _0x9663=("\x69\x74\x65\x6D\x5F\x6B\x65\x79\x62\x6C\x61\x6E\x6B"+i+_$_88cd[22]);//43
+		if(localStorage[_$_88cd[23]](_0x9663)=== _$_88cd[24])
+		{
+			_0x9654[_$_88cd[25]](_0x9663)
+		}
+		
+	}
+	//42
+	if(_0x9654[_$_88cd[26]]=== 0)
+	{
+		return
+	}
+	//49
+	let _0x9681=_0x9654[Math[_$_88cd[28]](Math[_$_88cd[27]]()* _0x9654[_$_88cd[26]])];//53
+	localStorage[_$_88cd[30]](_0x9681,_$_88cd[29]);let _0x9672=("\x69\x74\x65\x6D\x5F\x6B\x65\x79\x5F"+controls[_$_88cd[32]]((_0x9609)=>
+	{
+		return document[_$_88cd[5]](_$_88cd[4]+ _0x9609)[_$_88cd[15]]
+	}
+	)[_$_88cd[31]](_$_88cd[22])+_$_88cd[22]);//56
+	localStorage[_$_88cd[30]](_0x9672,_$_88cd[24]);let _0x9645= new Audio(_$_88cd[33]);//59
+	_0x9645[_$_88cd[34]]();setTimeout(()=>
+	{
+		location[_$_88cd[35]]()
+	}
+	,4000)
+}
+);let hasKeyBlank=false;//68
+for(let i=1;i<= 8;i++)
+{
+	if(localStorage[_$_88cd[23]](("\x69\x74\x65\x6D\x5F\x6B\x65\x79\x62\x6C\x61\x6E\x6B"+i+_$_88cd[22]))=== _$_88cd[24])
+	{
+		hasKeyBlank= true;break
+	}
+	
+}
+//69
+if(!hasKeyBlank)
+{
+	document[_$_88cd[9]](_$_88cd[37])[_$_88cd[11]][_$_88cd[36]]= _$_88cd[38]
+}
+
+  </script>
+</body>
+</html>

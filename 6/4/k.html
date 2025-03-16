@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="k.css" />
+    <title>k</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="rectangle" id="keyContainer" style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 10px;">
+        <div class="lamp" id="themeToggle"></div>
+        <div class="line line-1"></div>
+        <div class="line line-2"></div>
+        <div class="line line-3"></div>
+        <div class="line line-4"></div>
+        <div id="warningText" class="warning-text">Осторожно, не проеби их</div>
+      </div>
+    </div>
+
+
+    <img id="backButton" src="https://oudian.github.io/corridors/assets/back.png" alt="Back" class="back-button">
+
+    <div id="inventoryButtonContainer"></div>
+    <div id="inventoryPopup" class="popup">
+      <div class="popup-content">
+        <div id="inventoryItems"></div>
+      </div>
+    </div>
+
+    
+
+    
+
+    <script>
+      var _$_16b3=["\x44\x4F\x4D\x43\x6F\x6E\x74\x65\x6E\x74\x4C\x6F\x61\x64\x65\x64","\x6B\x65\x79\x43\x6F\x6E\x74\x61\x69\x6E\x65\x72","\x67\x65\x74\x45\x6C\x65\x6D\x65\x6E\x74\x42\x79\x49\x64","\x68\x74\x74\x70\x73\x3A\x2F\x2F\x6F\x75\x64\x69\x61\x6E\x2E\x67\x69\x74\x68\x75\x62\x2E\x69\x6F\x2F\x63\x6F\x72\x72\x69\x64\x6F\x72\x73\x2F\x61\x73\x73\x65\x74\x73\x2F\x6B\x65\x79\x35\x32\x34\x35\x2E\x70\x6E\x67","\x69\x74\x65\x6D\x5F\x6B\x65\x79\x5F\x35\x32\x34\x35","\x68\x74\x74\x70\x73\x3A\x2F\x2F\x6F\x75\x64\x69\x61\x6E\x2E\x67\x69\x74\x68\x75\x62\x2E\x69\x6F\x2F\x63\x6F\x72\x72\x69\x64\x6F\x72\x73\x2F\x61\x73\x73\x65\x74\x73\x2F\x6B\x65\x79\x62\x6C\x61\x6E\x6B\x2E\x70\x6E\x67","","\x66\x72\x6F\x6D","\x6C\x65\x6E\x67\x74\x68","\x69\x74\x65\x6D\x5F\x6B\x65\x79\x62\x6C\x61\x6E\x6B","\x73\x74\x61\x72\x74\x73\x57\x69\x74\x68","\x67\x65\x74\x49\x74\x65\x6D","\x63\x6F\x6C\x6C\x65\x63\x74\x65\x64","\x66\x69\x6C\x74\x65\x72","\x6B\x65\x79\x73","\x64\x69\x76","\x63\x72\x65\x61\x74\x65\x45\x6C\x65\x6D\x65\x6E\x74","\x63\x6C\x61\x73\x73\x4E\x61\x6D\x65","\x64\x65\x73\x63\x72\x69\x70\x74\x69\x6F\x6E\x2D\x62\x6F\x78","\x74\x65\x78\x74\x43\x6F\x6E\x74\x65\x6E\x74","\x61\x70\x70\x65\x6E\x64\x43\x68\x69\x6C\x64","\x62\x6F\x64\x79","\x72\x65\x6D\x6F\x76\x65","\x69\x6D\x67","\x73\x72\x63","\x69\x64","\x64\x61\x74\x61\x73\x65\x74","\x6B\x65\x79\x2D\x69\x6D\x61\x67\x65","\x61\x64\x64","\x63\x6C\x61\x73\x73\x4C\x69\x73\x74","\x69\x6E\x63\x6C\x75\x64\x65\x73","\x75\x73\x65\x64","\x68\x69\x64\x64\x65\x6E\x2D\x6B\x65\x79","\x63\x6C\x69\x63\x6B","\x63\x6F\x6E\x74\x61\x69\x6E\x73","\u0412\x20\u0441\u0432\u044F\u0437\u043A\u0435\x20\u0441\u043B\u0438\u0448\u043A\u043E\u043C\x20\u043C\u043D\u043E\u0433\u043E\x20\u043F\u0443\u0441\u0442\u044B\u0445\x20\u043A\u043B\u044E\u0447\u0435\u0439\x2E","\x73\x65\x74\x49\x74\x65\x6D","\x72\x65\x6C\x6F\x61\x64","\x61\x64\x64\x45\x76\x65\x6E\x74\x4C\x69\x73\x74\x65\x6E\x65\x72","\x66\x6F\x72\x45\x61\x63\x68"];
+document[_$_16b3[38]](_$_16b3[0],()=>
+{
+	const _0xB2CF=document[_$_16b3[2]](_$_16b3[1]);//1
+	const _0xB330=[{src:_$_16b3[3],id:_$_16b3[4]},...Array[_$_16b3[7]]({length:8},(_0xB3F2,_0xB453)=>
+	{
+		return ({src:_$_16b3[5],id:("\x69\x74\x65\x6D\x5F\x6B\x65\x79\x62\x6C\x61\x6E\x6B"+(_0xB453+ 1)+_$_16b3[6])})
+	}
+	)];//2
+	function _0xB26E()
+	{
+		return Object[_$_16b3[14]](localStorage)[_$_16b3[13]]((_0xB515)=>
+		{
+			return _0xB515[_$_16b3[10]](_$_16b3[9])&& localStorage[_$_16b3[11]](_0xB515)=== _$_16b3[12]
+		}
+		)[_$_16b3[8]]
+	}
+	function _0xB391(_0xB638)
+	{
+		const _0xB5D7=document[_$_16b3[16]](_$_16b3[15]);//17
+		_0xB5D7[_$_16b3[17]]= _$_16b3[18];_0xB5D7[_$_16b3[19]]= _0xB638;document[_$_16b3[21]][_$_16b3[20]](_0xB5D7);setTimeout(()=>
+		{
+			return _0xB5D7[_$_16b3[22]]()
+		}
+		,2000)
+	}
+	_0xB330[_$_16b3[39]]((_0xB515)=>
+	{
+		const _0xB4B4=document[_$_16b3[16]](_$_16b3[23]);//25
+		_0xB4B4[_$_16b3[24]]= _0xB515[_$_16b3[24]];_0xB4B4[_$_16b3[26]][_$_16b3[25]]= _0xB515[_$_16b3[25]];_0xB4B4[_$_16b3[29]][_$_16b3[28]](_$_16b3[27]);const _0xB576=localStorage[_$_16b3[11]](_0xB515[_$_16b3[25]]);//30
+		if([_$_16b3[12],_$_16b3[31]][_$_16b3[30]](_0xB576))
+		{
+			_0xB4B4[_$_16b3[29]][_$_16b3[28]](_$_16b3[32])
+		}
+		//32
+		_0xB4B4[_$_16b3[38]](_$_16b3[33],()=>
+		{
+			if(_0xB4B4[_$_16b3[29]][_$_16b3[34]](_$_16b3[32]))
+			{
+				return
+			}
+			//37
+			if(_0xB515[_$_16b3[25]][_$_16b3[10]](_$_16b3[9]))
+			{
+				if(_0xB26E()>= 3)
+				{
+					_0xB391(_$_16b3[35]);return
+				}
+				
+			}
+			//39
+			localStorage[_$_16b3[36]](_0xB515[_$_16b3[25]],_$_16b3[12]);_0xB4B4[_$_16b3[29]][_$_16b3[28]](_$_16b3[32]);location[_$_16b3[37]]()
+		}
+		);_0xB2CF[_$_16b3[20]](_0xB4B4)
+	}
+	)
+}
+)
+    </script>
+    
+
+    <script src="../../handle.js"></script>
+    <script src="../../lamp.js"></script>
+    <script src="../../back.js"></script>
+    <script src="../../inventory.js"></script>
+    <script src="phone.js"></script>
+  </body>
+</html>

@@ -1,0 +1,108 @@
+
+ 
+ #piano {
+     position: relative;
+     margin: 0 auto;
+     padding: 20px 20px 20px;
+     width: 782px;
+     background: #000000;
+     z-index: 2;
+ }
+ 
+ 
+
+ 
+ #piano .keys {
+     width: 780px;
+     padding: 2px 0 0 2px;
+     overflow: hidden;
+     background: #000;
+     border-radius: 0 0 4px 4px;
+ }
+ 
+ .key {
+     float: left;
+     position: relative;
+     width: 50px;
+     height: 180px;
+     margin: 0 2px 2px 0;
+     background: #fff;
+     border-radius: 0 0 4px 4px;
+ }
+ .key.pressed,
+ .key:active {
+     background: #f4f3f3;
+     box-shadow: inset 3px 2px 3px #999, inset -3px 2px 3px #999;
+ }
+ .key.black {
+     width: 0;
+     margin: 0;
+     z-index: 2;
+ }
+ .key.black:after {
+     content: "";
+     position: absolute;
+     top: -2px;
+     left: -16px;
+     display: block;
+     width: 32px;
+     height: 117px;
+     background: #000;
+     border-radius: 0 0 4px 4px;
+     box-shadow: 1px 1px 0 #555, 2px 2px 0 #555;
+ }
+ .key.black1:after {
+     left: -20px;
+ }
+ .key.black3:after {
+     left: -16px;
+ }
+ .key.black.pressed:after,
+ .key.black:active:after {
+     background-color: #222;
+ }
+ 
+
+ 
+ h1 {
+     position: absolute;
+     top: 25px;
+     left: 40px;
+     font-size: 16px;
+     line-height: 20px;
+     color: #fff;
+     text-shadow: -1px -1px 0 #000
+ }
+ 
+
+.piano-image {
+    position: absolute; 
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: auto;
+    cursor: pointer;
+    z-index: 1000;
+    filter: invert(0);
+  }
+  
+ 
+  .piano-container {
+    position: fixed; 
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    z-index: 1001;
+    pointer-events: auto;
+  }
+
+
+  body.dark .piano-image {
+    filter: invert(1);
+}
+ 
+  
+
+ 
