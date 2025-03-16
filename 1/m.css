@@ -356,3 +356,16 @@ body.dark .machine {
   filter: invert(1);
 }
 
+body.dark img[src="https://oudian.github.io/corridors/assets/ficbook.png"] {
+        filter: invert(1);
+      }
+
+      body.dark img[src="https://oudian.github.io/corridors/assets/authortoday.png"] {
+        filter: invert(1);
+      }
+
+      body.dark img[src="https://oudian.github.io/corridors/assets/x.png"] {
+        filter: invert(1);
+      }
+
+
