@@ -5,11 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Старт</title>
     <script type="text/javascript">
-        function redirect() {
+    function redirect() {
+        setTimeout(function () {
             window.location.href = "https://oudian.github.io/corridors/c.html";
-        }
+        }, 1000); 
+    }
 
-        window.onload = redirect;
+    window.onload = redirect;
     </script>
     <style>
         body {
@@ -35,5 +37,69 @@
 </head>
 <body>
     <a href="https://oudian.github.io/corridors/c.html">Старт</a>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js"></script>
+    <script>
+    if (typeof firebase === "undefined") {
+        console.error("Firebase SDK не загружен.");
+    } else {
+        console.log("Firebase SDK загружен.");
+    }
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyDRml8DMEyJCHmN-W6Uh8iCLEuJ7Qi6n_U",
+        authDomain: "corridors-e6bb2.firebaseapp.com",
+        databaseURL: "https://corridors-e6bb2-default-rtdb.firebaseio.com",
+        projectId: "corridors-e6bb2",
+        storageBucket: "corridors-e6bb2.appspot.com",
+        messagingSenderId: "296262914238",
+        appId: "1:296262914238:web:2569ed6fad9e62f486ceef",
+        measurementId: "G-T8YVN3FDHJ"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const database = firebase.database();
+    console.log("Firebase успешно инициализирован.");
+
+    function sanitizeKey(key) {
+        return key.replace(/[.#$/\[\]]/g, "-");
+    }
+
+    async function recordReferrer() {
+        try {
+            const referrer = document.referrer || "direct";
+            console.log("Реферер:", referrer);
+
+            const ipResponse = await fetch("https://api.ipify.org?format=json");
+            const ipData = await ipResponse.json();
+            const userIP = ipData.ip;
+            const sanitizedIP = sanitizeKey(userIP);
+
+            const timestamp = new Date().toISOString();
+
+            const userRef = database.ref(`statistics/${sanitizedIP}/referrer`);
+
+            const existingRef = await userRef.get();
+            const existingList = existingRef.exists() ? existingRef.val() : [];
+
+            if (!existingList.some(entry => entry.url === referrer)) {
+                existingList.push({
+                    url: referrer,
+                    firstVisit: timestamp
+                });
+
+                await userRef.set(existingList);
+                console.log("Реферер добавлен в базу.");
+            } else {
+                console.log("Реферер уже записан ранее.");
+            }
+
+        } catch (err) {
+            console.error("Ошибка при записи реферера:", err);
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', recordReferrer);
+</script>
 </body>
 </html>
