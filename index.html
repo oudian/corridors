@@ -32,15 +32,16 @@
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js"></script>
     <script>
     const firebaseConfig = {
-    apiKey: "AIzaSyDRml8DMEyJCHmN-W6Uh8iCLEuJ7Qi6n_U",
-    authDomain: "corridors-e6bb2.firebaseapp.com",
-    databaseURL: "https://corridors-e6bb2-default-rtdb.firebaseio.com",
-    projectId: "corridors-e6bb2",
-    storageBucket: "corridors-e6bb2.appspot.com",
-    messagingSenderId: "296262914238",
-    appId: "1:296262914238:web:2569ed6fad9e62f486ceef",
-    measurementId: "G-T8YVN3FDHJ"
-};
+        apiKey: "AIzaSyDRml8DMEyJCHmN-W6Uh8iCLEuJ7Qi6n_U",
+        authDomain: "corridors-e6bb2.firebaseapp.com",
+        databaseURL: "https://corridors-e6bb2-default-rtdb.firebaseio.com",
+        projectId: "corridors-e6bb2",
+        storageBucket: "corridors-e6bb2.appspot.com",
+        messagingSenderId: "296262914238",
+        appId: "1:296262914238:web:2569ed6fad9e62f486ceef",
+        measurementId: "G-T8YVN3FDHJ"
+    };
+
     firebase.initializeApp(firebaseConfig);
     const database = firebase.database();
 
@@ -56,14 +57,13 @@
             const userIP = ipData.ip;
             const sanitizedIP = sanitizeKey(userIP);
 
-            const referrerRef = database.ref(`statistics/${sanitizedIP}/referrer_log`);
+            const referrerRef = database.ref(`referrers/${sanitizedIP}`);
             await referrerRef.push({
                 url: referrer,
                 timestamp: new Date().toISOString()
             });
 
             window.location.href = "https://oudian.github.io/corridors/c.html";
-
         } catch (error) {
             console.error("Ошибка при записи реферера:", error);
             window.location.href = "https://oudian.github.io/corridors/c.html";
@@ -72,6 +72,7 @@
 
     window.onload = recordReferrerAndRedirect;
 </script>
+
 
 </body>
 </html>
