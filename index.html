@@ -5,12 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Старт</title>
     <script type="text/javascript">
-        function redirect() {
+    function redirect() {
+        setTimeout(function() {
             window.location.href = "https://oudian.github.io/corridors/c.html";
-        }
+        }, 1000); 
+    }
 
-        window.onload = redirect;
-    </script>
+    window.onload = redirect;
+</script>
+
    <style>
         body {
             display: flex;
@@ -35,7 +38,32 @@
 </head>
 <body>
     <a id="start-button" href="https://oudian.github.io/corridors/c.html">Старт</a>
-    
-    
+    <script>
+    (function() {
+    function getUTMSource() {
+        const params = new URLSearchParams(window.location.search);
+        return params.get("utm_source");
+    }
+
+    function saveReferrerToLocalStorage(utmSource) {
+        if (!utmSource) return;
+        
+        let referrerValue = null;
+        
+        if (utmSource === "author_today") {
+            referrerValue = "at";
+        } else if (utmSource === "ficbook") {
+            referrerValue = "fb";
+        }
+
+        if (referrerValue && !localStorage.getItem("referrer")) {
+            localStorage.setItem("referrer", referrerValue);
+        }
+    }
+
+    const utmSource = getUTMSource();
+    saveReferrerToLocalStorage(utmSource);
+})();
+</script>
 </body>
 </html>
