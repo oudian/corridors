@@ -28,26 +28,11 @@
     </style>
 </head>
 <body>
-    <a id="start-button" href="c.html">Старт</a>
+    <a id="start-button" href="https://oudian.github.io/corridors/c.html">Старт</a>
     
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js"></script>
     <script src="statistics.js"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            function onFirebaseLoaded() {
-                const startButton = document.getElementById("start-button");
-                startButton.style.display = "inline-block";
-                window.location.href = "c.html";
-            }
-            
-            if (typeof firebase !== "undefined") {
-                onFirebaseLoaded();
-            } else {
-                console.error("Firebase SDK не загружен.");
-                onFirebaseLoaded();
-            }
-        });
-    </script>
+    
 </body>
 </html>
