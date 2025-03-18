@@ -105,11 +105,12 @@ async function collectStorageStatistics() {
             };
         }
 
-        await userRef.set({
-            lastUpdated: timestamp,
-            localStorage: updatedLocalData,
-            sessionStorage: updatedSessionData
+        await userRef.update({
+          lastUpdated: timestamp,
+          localStorage: updatedLocalData,
+          sessionStorage: updatedSessionData
         });
+
 
         window.__previousStorageSnapshot.localStorage = currentLocalSnap;
         window.__previousStorageSnapshot.sessionStorage = currentSessionSnap;
